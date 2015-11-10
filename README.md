@@ -31,12 +31,12 @@ Drone Bees
 Actions
 -------------------------------
 
-Selecting "hit" should randomly pick a bee and "hit it" deducting the hit value from their current amount of hit points, following the rules above for each type of bee. When a bee has run out of hit points it should no longer be available to pick when the user presses/selects hit, (i.e. that bee is dead). When the last queen dies - all bees should die.
+Selecting "hit" should randomly pick a bee and "hit it" deducting the hit value from their current amount of hit points, following the rules above for each type of bee. When a bee has run out of hit points it should no longer be available to pick when the user presses / selects hit, (i.e. that bee is dead). When the last queen dies - all bees should die.
 
 Display
 -------------------------------
 
-Each time “hit” has been pressed you must display in the browser each individual bee with their details (queen, worker etc), how many hit points it has, whether they are alive or dead and the result of the hit status (i.e. what bee was hit and how many hit points were deducted from it). You should be able to reset the bees at any time to start again.
+Each time "hit" has been pressed you must display in the browser each individual bee with their details (queen, worker etc), how many hit points it has, whether they are alive or dead and the result of the hit status (i.e. what bee was hit and how many hit points were deducted from it). You should be able to reset the bees at any time to start again.
 
 
 Solution
@@ -48,4 +48,11 @@ Technologies
 -------------------------------
 
 - Backend: PHP >= 5.4, PHPUnit
-- Frontend: Bootstrap 3, JQuery 
+- Frontend: Bootstrap 3, JQuery
+
+Tests:
+
+I have tested the only PHP class:
+
+cd tests
+phpunit BeesSlapTest.php
