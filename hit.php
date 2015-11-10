@@ -6,16 +6,16 @@ include_once("classes/BeesSlap.php");
 
 $beesSplap = new BeesSlap( !empty($_SESSION['beeSlap']) ? $_SESSION['beeSlap'] : null );
 
-$beeKind = $beesSplap->recoverBeeKindToHit();
-$number = $beesSplap->recoverBeeNumber($beeKind);
-$points = $beesSplap->deductHitPoints($beeKind, $number);
-$status = ($beesSplap->isBeeDead($beeKind, $number)) ? '<span style="color: darkred">Dead</span>' : '<span style="color: darkgreen">Alive</span>';
+$kind = isset($_POST['beeKind']) ? $_POST['beeKind'] : $beesSplap->recoverBeeKindToHit();
+$number = isset($_POST['beeNumber']) ? $_POST['beeNumber'] : $beesSplap->recoverBeeNumber($kind);
+$points = $beesSplap->deductHitPoints($kind, $number);
+$status = ($beesSplap->isBeeDead($kind, $number)) ? '<span style="color: darkred">Dead</span>' : '<span style="color: darkgreen">Alive</span>';
 
 $_SESSION['beeSlap'] = $beesSplap->getBees();
 
 ?>
 <div class="alert alert-info">
-	<h3>A <?php echo $beeKind ?> bee was hit!</h3>
+	<h3>A <?php echo $kind ?> bee was hit!</h3>
 	<p>Bee number: <?php echo $number ?></p>
 	<p>Points: <?php echo $points ?></p>
 	<p>Status: <?php echo $status ?></p>
@@ -27,10 +27,15 @@ $_SESSION['beeSlap'] = $beesSplap->getBees();
 </div>
 
 <script>
-	$('#<?php echo "bee-".$beeKind."-".$number."-points"; ?>').html('<span><?php echo $points ?></span>');
-	$('#<?php echo "bee-".$beeKind."-".$number."-status"; ?>').html('<span><?php echo $status ?></span>');
+	$('#<?php echo "bee-".$kind."-".$number."-points"; ?>').html('<span><?php echo $points ?></span>');
+	$('#<?php echo "bee-".$kind."-".$number."-status"; ?>').html('<span><?php echo $status ?></span>');
+
+	<?php if ($beesSplap->isBeeDead($kind, $number)): ?>
+		$('#<?php echo "bee-".$kind."-".$number."-hitit"; ?>').html('<button type="button" class="btn btn-primary hitItButton" disabled="disabled">Hit it!</button>');
+	<?php endif; ?>
 
 	<?php if ($beesSplap->isQueenDead()): ?>
 	$('#hit-button').prop("disabled", true);
+	$('.hitItButton').prop("disabled", true);
 	<?php endif; ?>
 </script>
