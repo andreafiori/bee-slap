@@ -8,6 +8,9 @@ include_once("../classes/BeesSlap.php");
 
 class BeesSlapTest extends \PHPUnit_Framework_TestCase
 {
+	/**
+	 * @var BeesSlap
+	 */
 	private $beesSlap;
 
 	protected function setUp()
@@ -52,9 +55,9 @@ class BeesSlapTest extends \PHPUnit_Framework_TestCase
 	public function testIsQueenDeadIsFalse()
 	{
 		$number = $this->beesSlap->recoverBeeNumber('queen');
-		
-		$points = $this->beesSlap->deductHitPoints('queen', $number, 1);
-		
+
+		$this->beesSlap->deductHitPoints('queen', $number, 1);
+
 		$this->assertFalse( $this->beesSlap->isQueenDead() );
 	}
 	

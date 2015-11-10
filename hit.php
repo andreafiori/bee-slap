@@ -14,7 +14,8 @@ $status = ($beesSplap->isBeeDead($kind, $number)) ? '<span style="color: darkred
 $_SESSION['beeSlap'] = $beesSplap->getBees();
 
 ?>
-<div class="alert alert-info">
+<div class="alert alert-info" id="msgALertInfo">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<h3>A <?php echo $kind ?> bee was hit!</h3>
 	<p>Bee number: <?php echo $number ?></p>
 	<p>Points: <?php echo $points ?></p>
@@ -38,4 +39,6 @@ $_SESSION['beeSlap'] = $beesSplap->getBees();
 	$('#hit-button').prop("disabled", true);
 	$('.hitItButton').prop("disabled", true);
 	<?php endif; ?>
+
+	$("#msgALertInfo").delay(3200).fadeOut(300);
 </script>

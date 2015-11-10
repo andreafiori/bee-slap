@@ -2,6 +2,11 @@
 
 class BeesSlap {
 
+	/**
+	 * Bees with their own points and hit points
+	 *
+	 * @var array
+	 */
 	private $bees = array(
 		'queen' => array(
 			'number'		=> 3,

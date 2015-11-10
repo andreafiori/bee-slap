@@ -13,7 +13,7 @@ before_script:
   - cd tests
 
 script:
-  - phpunit
+  - phpunit BeesSlapTest.php
 
 notifications:
    email: a.fiori@cheapnet.it
