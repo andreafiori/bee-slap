@@ -41,26 +41,15 @@ class BeesSlapTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( $this->beesSlap->deductHitPoints($beeKind, $number) < $bees[$beeKind]['initialPoints'] );
 	}
 
-	public function testIsQueenDeadIsTrue()
+	public function testAreAllQueeensDead()
 	{
-		$bees = $this->beesSlap->getBees();
-		
-		$number = $this->beesSlap->recoverBeeNumber('queen');
-		
-		$points = $this->beesSlap->deductHitPoints('queen', $number, 100);
-		
-		$this->assertTrue( $this->beesSlap->isQueenDead() );
-	}
-	
-	public function testIsQueenDeadIsFalse()
-	{
-		$number = $this->beesSlap->recoverBeeNumber('queen');
+		$this->beesSlap->deductHitPoints('queen', 1, 100);
+		$this->beesSlap->deductHitPoints('queen', 2, 100);
+		$this->beesSlap->deductHitPoints('queen', 3, 100);
 
-		$this->beesSlap->deductHitPoints('queen', $number, 1);
-
-		$this->assertFalse( $this->beesSlap->isQueenDead() );
+		$this->assertTrue( $this->beesSlap->areAllQueeensDead() );
 	}
-	
+
 	public function testIsBeeDeadIsTrue()
 	{
 		$beeKind = $this->beesSlap->recoverBeeKindToHit();

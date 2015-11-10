@@ -14,7 +14,7 @@ Queen Bees
 - Each Queen Bee initially has 100 hit points
 - When they are hit 7 hit points are deducted
 - A bee dies when it has 0 or fewer hit points remaining
-- When all the queens are dead – all other bees left (workers, drones) automatically die.
+- When all the queens are dead - all other bees left (workers, drones) automatically die.
 
 Worker Bees
 -------------------------------
@@ -31,7 +31,7 @@ Drone Bees
 Actions
 -------------------------------
 
-Selecting "hit" should randomly pick a bee and "hit it" deducting the hit value from their current amount of hit points, following the rules above for each type of bee. When a bee has run out of hit points it should no longer be available to pick when the user presses/selects hit, (i.e. that bee is dead). When the last queen dies – all bees should die.
+Selecting "hit" should randomly pick a bee and "hit it" deducting the hit value from their current amount of hit points, following the rules above for each type of bee. When a bee has run out of hit points it should no longer be available to pick when the user presses/selects hit, (i.e. that bee is dead). When the last queen dies - all bees should die.
 
 Display
 -------------------------------

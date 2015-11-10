@@ -111,19 +111,19 @@ class BeesSlap {
 	}
 
 	/**
-	 * Check if a queen bee is dead
+	 * Check if all queen bee are dead
 	 *
 	 * @return bool
 	 */
-	public function isQueenDead()
+	public function areAllQueeensDead()
 	{
 		foreach($this->bees['queen']['lineUp'] as $key => $value) {
-			if ($value <  $this->bees['queen']['hitPoints']) {
-				return true;
+			if ($value > $this->bees['queen']['hitPoints']) {
+				return false;
 			}
 		}
-		
-		return false;
+
+		return true;
 	}
 
 	/**
