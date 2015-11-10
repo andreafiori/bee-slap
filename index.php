@@ -52,8 +52,8 @@ $bees = $beesSplap->getBees();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
+	<meta name="description" content="Bee slap game">
+	<meta name="keywords" content="bee, slap, game, browser, php">
 	<meta name="author" content="Andrea Fiori">
 
 	<title>Bee Slap</title>
@@ -69,6 +69,8 @@ $bees = $beesSplap->getBees();
 	</div>
 
 	<p>Welcome to the <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">bee slap game</a>.</p>
+
+	<p><strong>Note:</strong> if you refresh the browser, the game will restart.</p>
 
 	<!-- Modal -->
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -114,7 +116,8 @@ $bees = $beesSplap->getBees();
 
 					<h3>Display</h3>
 
-					Each time “hit” has been pressed you must display in the browser each individual bee with their details (queen, worker etc), how many hit points it has, whether they are alive or dead and the result of the hit status (i.e. what bee was hit and how many hit points were deducted from it). You should be able to reset the bees at any time to start again.
+					<p>Each time "hit" has been pressed you must display in the browser each individual bee with their details (queen, worker etc), how many hit points it has, whether they are alive or dead and the result of the hit status (i.e. what bee was hit and how many hit points were deducted from it). You should be able to reset the bees at any time to start again.</p>
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

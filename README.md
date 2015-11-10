@@ -1,6 +1,8 @@
 Bee Slap Game
 ===============================
 
+[![Build Status](https://travis-ci.org/andreafiori/bee-slap.svg)](https://travis-ci.org/andreafiori/bee-slap)
+
 Initial Rules
 -------------------------------
 
@@ -45,5 +47,5 @@ I have followed a TDD approach. I set a starting line up and after an Ajax POST 
 Technologies
 -------------------------------
 
-Backend: PHP >= 5.4, PHPUnit
-Frontend: Bootstrap 3, JQuery 
+- Backend: PHP >= 5.4, PHPUnit
+- Frontend: Bootstrap 3, JQuery 

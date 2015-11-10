@@ -31,7 +31,7 @@ $_SESSION['beeSlap'] = $beesSplap->getBees();
 	$('#<?php echo "bee-".$kind."-".$number."-status"; ?>').html('<span><?php echo $status ?></span>');
 
 	<?php if ($beesSplap->isBeeDead($kind, $number)): ?>
-		$('#<?php echo "bee-".$kind."-".$number."-hitit"; ?>').html('<button type="button" class="btn btn-primary hitItButton" disabled="disabled">Hit it!</button>');
+		$('#<?php echo "bee-".$kind."-".$number."-hitit"; ?>').find('.hitItButton').prop('disabled', true);
 	<?php endif; ?>
 
 	<?php if ($beesSplap->isQueenDead()): ?>
