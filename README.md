@@ -56,3 +56,12 @@ I have tested the only PHP class:
 
 cd tests
 phpunit BeesSlapTest.php
+
+TODO
+-------------------------------
+
+- Ajax loading with spinner
+- Set all bees status to dead when the game ends
+- Highlight table cell of the bee hit
+- Show a game over label when the game is over
+
