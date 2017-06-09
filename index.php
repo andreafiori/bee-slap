@@ -22,7 +22,7 @@ function printRow($bees, $beeKind)
 {
 	foreach($bees[$beeKind]['lineUp'] as $key => $value):
 	?>
-		<tr>
+		<tr class="highlightable-row-<?php echo $key ?>">
 			<td id="<?php echo "bee-".$beeKind."-".$key."-numbers"; ?>"><?php echo $key ?></td>
 			<td id="<?php echo "bee-".$beeKind."-".$key."-points"; ?>"><?php echo $value ?></td>
 			<td id="<?php echo "bee-".$beeKind."-".$key."-status"; ?>">
@@ -53,55 +53,118 @@ $bees = $beesSplap->getBees();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Bee slap game">
-	<meta name="keywords" content="bee, slap, game, browser, php">
+	<meta name="keywords" content="bee, slap, game, browser, php, bootstrap">
 	<meta name="author" content="Andrea Fiori">
 
-	<title>Bee Slap</title>
+	<title>Bee Slap game</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	/* Space out content a bit */
+	body {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	/* Everything but the jumbotron gets side spacing for mobile first views */
+	.header,
+	.marketing,
+	.footer {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	/* Custom page header */
+	.header {
+		padding-bottom: 20px;
+		border-bottom: 1px solid #e5e5e5;
+	}
+
+	/* Make the masthead heading the same height as the navigation */
+	.header h3 {
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 40px;
+	}
+	</style>
 </head>
 <body>
 
 <div class="container">
 	
-	<div class="text-center">
-		<h1>Bee slap</h1>
+	<div class="header clearfix">
+		<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation">
+					<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Rules</a>
+				</li>
+				<li role="presentation"><a href="javascript:void(0)" id="hit-button">Random Hit</a></li>
+				<li role="presentation" class="active">
+					<a id="reset-button">New game</a>
+				</li>
+			</ul>
+		</nav>
+		<h3 class="text-muted">Bee slap game</h3>
 	</div>
 
-	<p>Welcome to the <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">bee slap game</a>.</p>
+	<div class="row">
+		<div class="col-md-12 col-md-12 col-lg-4">
+			<h3 class="text-center">Queens</h3>
+			<table class="table table-bordered table-responsive" width="100%" id="table-queen">
+			<?php printRowHeader(); ?>
+			<?php printRow($bees, 'queen'); ?>
+			</table>
+		</div>
+		<div class="col-md-12 col-md-12 col-lg-4">
+			<h3 class="text-center">Workers</h3>
+			<table class="table table-bordered table-responsive" width="100%" id="table-workers">
+			<?php printRowHeader(); ?>
+			<?php printRow($bees, 'workers'); ?>
+			</table>
+		</div>
+		<div class="col-md-12 col-md-12 col-lg-4">
+			<h3 class="text-center">Drones</h3>
+			<table class="table table-bordered table-responsive" width="100%" id="table-drone">
+			<?php printRowHeader(); ?>
+			<?php printRow($bees, 'drone'); ?>
+			</table>
+		</div>
+	</div>
 
-	<p><strong>Note:</strong> if you refresh the browser, the game will restart.</p>
+	<br>
 
-	<!-- Modal -->
+	<div id="result"></div>
+	
+	<!-- Modal with rules -->
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Bee slap game rules</h4>
+					<h4 class="modal-title" id="myModalLabel">Rules</h4>
 				</div>
 				<div class="modal-body">
-					<h3>Initial Rules</h3>
 
 					<p>You have 15 Bees. 3 of these bees are Queen Bees, 5 are Worker Bees and 7 are Drone Bees.</p>
 
-					<h3>Queen Bees</h3>
-					<ul>
-						<li>Each Queen Bee initially has 100 hit points</li>
-						<li>When they are hit 7 hit points are deducted</li>
-						<li>A bee dies when it has 0 or fewer hit points remaining</li>
-						<li>When all the queens are dead – all other bees left (workers, drones) automatically die</li>
-					</ul>
-
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
+							<h3>Queen Bees</h3>
+							<ul>
+								<li>Each Queen Bee initially has 100 hit points</li>
+								<li>When they are hit 7 hit points are deducted</li>
+								<li>A bee dies when it has 0 or fewer hit points remaining</li>
+								<li>When all the queens are dead – all other bees left (workers, drones) automatically die</li>
+							</ul>
+						</div>
+						<div class="col-md-4">
 							<h3>Worker Bees</h3>
 							<ul>
 								<li>Each worker Bee initially has 75 hit points</li>
 								<li>When they are hit 12 hit points are deducted</li>
 							</ul>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<h3>Drone Bees</h3>
 							<ul>
 								<li>Each Drone Bee initially has 50 hit points</li>
@@ -126,41 +189,6 @@ $bees = $beesSplap->getBees();
 		</div>
 	</div>
 
-
-	<div class="row">
-		<div class="col-md-4">
-			<h2>Queen</h2>
-			<table class="table table-bordered table-responsive" width="100%">
-			<?php printRowHeader(); ?>
-			<?php printRow($bees, 'queen'); ?>
-			</table>
-		</div>
-		<div class="col-md-4">
-			<h2>Workers</h2>
-			<table class="table table-bordered table-responsive" width="100%">
-			<?php printRowHeader(); ?>
-			<?php printRow($bees, 'workers'); ?>
-			</table>
-		</div>
-		<div class="col-md-4">
-			<h2>Drones</h2>
-			<table class="table table-bordered table-responsive" width="100%">
-			<?php printRowHeader(); ?>
-			<?php printRow($bees, 'drone'); ?>
-			</table>
-		</div>
-	</div>
-
-	<div class="text-center">
-		<form action="javascript:void(0)" method="post" role="form">
-			<button type="button" id="hit-button" class="btn btn-primary">Hit!</button>
-			<button type="button" id="reset-button" class="btn btn-danger">Reset</button>
-		</form>
-	</div>
-
-	<br>
-
-	<div id="result"></div>
 </div>
 
 <script src="js/jquery.min.js"></script>

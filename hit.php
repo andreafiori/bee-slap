@@ -30,6 +30,12 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 	</div>
 
 	<script>
+		$('#table-queen tr').removeClass('bg-info');
+		$('#table-workers tr').removeClass('bg-info');
+		$('#table-drone tr').removeClass('bg-info');
+		
+		$('#table-<?php echo $kind ?> .highlightable-row-<?php echo $number ?>').addClass('bg-info').siblings().removeClass('bg-info');
+		
 		$('#<?php echo "bee-".$kind."-".$number."-points"; ?>').html('<span><?php echo $points ?></span>');
 		$('#<?php echo "bee-".$kind."-".$number."-status"; ?>').html('<span><?php echo $status ?></span>');
 

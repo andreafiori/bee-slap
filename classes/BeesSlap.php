@@ -1,6 +1,8 @@
 <?php
 
 class BeesSlap {
+	
+	private $log = array();
 
 	/**
 	 * Bees with their own points and hit points
@@ -16,12 +18,12 @@ class BeesSlap {
 		'workers' => array(
 			'number'		=> 5,
 			'initialPoints' => 75,
-			'hitPoints' 	=> 12,
+			'hitPoints'		=> 12,
 		),
 		'drone' => array(
-			'number' 		=> 7,
+			'number'		=> 7,
 			'initialPoints' => 75,
-			'hitPoints' 	=> 18,
+			'hitPoints'		=> 18,
 		),
 	);
 
@@ -75,12 +77,12 @@ class BeesSlap {
 	}
 
 	/**
-     * Recover a bee number
-     * 
-     * @param string $beeKind
-     * 
-     * @return int
-     */
+	 * Recover a bee number
+	 * 
+	 * @param string $beeKind
+	 * 
+	 * @return int
+	 */
 	public function recoverBeeNumber($beeKind)
 	{
 		if ( !isset($this->bees[$beeKind]) ) {
@@ -139,7 +141,7 @@ class BeesSlap {
 		if ($this->bees[$beeKind]['lineUp'][$number] < $this->bees[$beeKind]['hitPoints']) {
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -160,8 +162,10 @@ class BeesSlap {
 	}
 	
 	/**
-     * @return array
-     */
+	 * Get all bees
+	 * 
+	 * @return array
+	 */
 	public function getBees()
 	{
 		return $this->bees;
