@@ -59,6 +59,7 @@ $bees = $beesSplap->getBees();
 	<title>Bee Slap game</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/toastr.min.css" rel="stylesheet">
 	<style>
 	/* Space out content a bit */
 	body {
@@ -96,11 +97,11 @@ $bees = $beesSplap->getBees();
 		<nav>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation">
-					<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Rules</a>
+					<a href="#" data-toggle="modal" data-target="#modalRules">Rules</a>
 				</li>
 				<li role="presentation"><a href="javascript:void(0)" id="hit-button">Random Hit</a></li>
 				<li role="presentation" class="active">
-					<a id="reset-button">New game</a>
+					<a class="reset-button">New game</a>
 				</li>
 			</ul>
 		</nav>
@@ -136,7 +137,7 @@ $bees = $beesSplap->getBees();
 	<div id="result"></div>
 	
 	<!-- Modal with rules -->
-	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	<div class="modal fade bs-example-modal-lg" id="modalRules" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -189,11 +190,55 @@ $bees = $beesSplap->getBees();
 		</div>
 	</div>
 
+	<!-- Game over modal -->
+	<div class="modal fade bs-example-modal-lg" id="modalGameOver" tabindex="-1" role="dialog" aria-labelledby="myGameOverModalLabel">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">The game is over!</h4>
+				</div>
+				<div class="modal-body">
+
+					<h3>GAME OVER!</h3>
+
+					<p>All Queens are dead! The game is over.</p>
+
+					<div class="modal-footer">
+						<!-- <button type="button" class="btn btn-default">Rules</button> -->
+						<button type="button" class="btn btn-primary reset-button" data-dismiss="modal">New game</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/toastr.min.js"></script>
 <script>
+	// Toastr configuration
+	toastr.options = {
+		"closeButton": false,
+		"debug": false,
+		"newestOnTop": false,
+		"progressBar": false,
+		"positionClass": "toast-bottom-right",
+		"preventDuplicates": false,
+		"onclick": null,
+		"showDuration": "300",
+		"hideDuration": "1000",
+		"timeOut": "5000",
+		"extendedTimeOut": "1000",
+		"showEasing": "swing",
+		"hideEasing": "linear",
+		"showMethod": "fadeIn",
+		"hideMethod": "fadeOut"
+	}
+
 	$(document).ready(function() {
 		$("#hit-button").click(function(event) {
 			$.post("hit.php", function(data) {
@@ -216,7 +261,7 @@ $bees = $beesSplap->getBees();
 			});
 		});
 
-		$("#reset-button").click(function(event) {
+		$(".reset-button").click(function(event) {
 			$.post("reset.php", function(data) {
 				window.location.reload(true);
 			});

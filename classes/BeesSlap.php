@@ -12,7 +12,7 @@ class BeesSlap {
 	private $bees = array(
 		'queen' => array(
 			'number'		=> 3,
-			'initialPoints' => 100,
+			'initialPoints'	=> 100,
 			'hitPoints'		=> 7,
 		),
 		'workers' => array(
@@ -169,5 +169,20 @@ class BeesSlap {
 	public function getBees()
 	{
 		return $this->bees;
+	}
+	
+	public function addLog($array)
+	{
+		$this->log[] = $array;
+	}
+	
+	public function getLog($log)
+	{
+		return $this->log;
+	}
+	
+	public function resetLog()
+	{
+		$this->log = [];
 	}
 }

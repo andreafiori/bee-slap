@@ -16,20 +16,20 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 	$_SESSION['beeSlap'] = $beesSplap->getBees();
 
 	?>
-	<div class="alert alert-info" id="msgALertInfo">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<h3>A <?php echo $kind ?> bee was hit!</h3>
-		<p>Bee number: <?php echo $number ?></p>
-		<p>Points: <?php echo $points ?></p>
-		<p>Status: <?php echo $status ?></p>
 	
-		<?php if ($beesSplap->areAllQueeensDead()): ?>
-		<h3>A queen is dead!</h3>
-		<h4>Game over</h4>
-		<?php endif; ?>
-	</div>
 
 	<script>
+		<?php if ($beesSplap->areAllQueeensDead()): ?>
+		$('#modalGameOver').modal({
+			backdrop: 'static',
+			keyboard: false
+		}); 
+		<?php endif; ?>
+	
+		var notifMsg = '<?php echo ucfirst($kind) ?> has been hit! Points: <?php echo $points ?>. Status: <?php echo strip_tags($status) ?>';
+		
+		toastr.info(notifMsg);
+	
 		$('#table-queen tr').removeClass('bg-info');
 		$('#table-workers tr').removeClass('bg-info');
 		$('#table-drone tr').removeClass('bg-info');
@@ -47,9 +47,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 		$('#hit-button').prop("disabled", true);
 		$('.hitItButton').prop("disabled", true);
 		<?php endif; ?>
-
-		$("#msgALertInfo").delay(3200).fadeOut(300);
 	</script>
 	<?php
 }
-
