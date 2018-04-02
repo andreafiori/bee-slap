@@ -101,7 +101,7 @@ $bees = $beesSplap->getBees();
 				</li>
 				<li role="presentation"><a href="javascript:void(0)" id="hit-button">Random Hit</a></li>
 				<li role="presentation" class="active">
-					<a class="reset-button">New game</a>
+					<a style="cursor: pointer" data-toggle="modal" data-target="#modalNewGame">New game</a>
 				</li>
 			</ul>
 		</nav>
@@ -185,6 +185,25 @@ $bees = $beesSplap->getBees();
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal confirm new game -->
+	<div class="modal fade bs-example-modal-lg" id="modalNewGame" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">New game</h4>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure to begin a new game? All results will be lost.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary reset-button" data-dismiss="modal">Confirm</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
