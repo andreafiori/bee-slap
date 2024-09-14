@@ -1,7 +1,5 @@
 # Bee Slap Game
 
-[![Build Status](https://travis-ci.org/andreafiori/bee-slap.svg)](https://travis-ci.org/andreafiori/bee-slap)
-
 ## Initial Rules
 
 You have 15 Bees. 3 of these bees are Queen Bees, 5 are Worker Bees and 7 are Drone Bees.
